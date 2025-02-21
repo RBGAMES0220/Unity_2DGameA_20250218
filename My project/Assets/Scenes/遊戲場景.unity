@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 477331177}
   - component: {fileID: 477331176}
   - component: {fileID: 477331175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,9 +386,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe407860eb62c148a46e2afa50c8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1988594380}
   moveSpeed: 11.35
   jumpForce: 11.95
+  groundCheckDistance: 1.41
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!70 &910016076
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -416,7 +419,7 @@ GameObject:
   - component: {fileID: 1813961266}
   - component: {fileID: 1813961265}
   - component: {fileID: 1813961267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
