@@ -11,6 +11,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
 
+    [Header("Dash info")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDuration;
+    private float dashTime;
+
+    [SerializeField] private float dashCooldown;
+    private float dashCooldownTimer;
+
+    [Header("Attack info")]
+    private bool isAttacking;
+    private int comboCounter;
+
 
     private float xInput;
 
@@ -35,9 +47,22 @@ public class Player : MonoBehaviour
         CheckInput();
         Movement();
         CollisionChecks();
+
+        dashTime -= Time.deltaTime;
+        dashCooldownTimer -= Time.deltaTime;
+
+        
+
+        
+
         AnimatorControllers();
         FlipController();
        
+    }
+
+    public void AttackOver()
+    {
+        isAttacking = false;
     }
 
     private void CollisionChecks()
@@ -49,16 +74,43 @@ public class Player : MonoBehaviour
     {
         xInput = Input.GetAxisRaw("Horizontal");
 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            isAttacking = true;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            DashAbility();
+        }
+
     }
+
+    private void DashAbility()
+    {
+        if(dashCooldownTimer < 0)
+        {
+            dashCooldownTimer = dashCooldown;
+            dashTime = dashDuration;
+        }
+     }
 
     private void Movement()
     {
-        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        if (dashTime > 0)
+        {
+            rb.velocity = new Vector2(xInput * dashSpeed, 0);
+        }
+        else
+        {
+            rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        }
+        
     }
 
     private  void Jump()
@@ -78,6 +130,9 @@ public class Player : MonoBehaviour
 
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isDashing" , dashTime > 0);
+        anim.SetBool("isAttacking", isAttacking);
+        anim.SetInteger("comboCounter", comboCounter);
     }
 
    private void Flip()

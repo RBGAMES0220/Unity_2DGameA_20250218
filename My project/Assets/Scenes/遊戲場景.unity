@@ -386,8 +386,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe407860eb62c148a46e2afa50c8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 11.35
+  moveSpeed: 6
   jumpForce: 16.92
+  dashSpeed: 15
+  dashDuration: 0.25
+  dashCooldown: 10
   groundCheckDistance: 1.41
   whatIsGround:
     serializedVersion: 2
@@ -530,6 +533,7 @@ GameObject:
   - component: {fileID: 1988594378}
   - component: {fileID: 1988594379}
   - component: {fileID: 1988594380}
+  - component: {fileID: 1988594381}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -624,3 +628,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1988594381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988594377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7057c1ecef5cf42b1c524ce7143f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
