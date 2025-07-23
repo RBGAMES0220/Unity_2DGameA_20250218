@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player : Entity
 {
-
+    public Collider2D[] enemyColliders;
+    [Header("Attack details")]
+    [SerializeField] private float attackRadius;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask whatIsEnemy;
 
     [Header("Move info")]
     [SerializeField] private float moveSpeed;
@@ -172,5 +176,13 @@ public class Player : Entity
         }
     }
 
-    
+    public void DamageEnemis()
+    {
+        enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsEnemy);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+    }
 }

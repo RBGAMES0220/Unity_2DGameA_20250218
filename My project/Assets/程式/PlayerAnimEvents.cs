@@ -15,4 +15,6 @@ public class PlayerAnimEvents : MonoBehaviour
     {
         player.AttackOver();
     }
+
+    public void DamageEnemies() => player.DamageEnemis();
 }
