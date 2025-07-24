@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public Collider2D[] enemyColliders;
+   
     [Header("Attack details")]
     [SerializeField] private float attackRadius;
     [SerializeField] private Transform attackPoint;
@@ -178,7 +178,12 @@ public class Player : Entity
 
     public void DamageEnemis()
     {
-        enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsEnemy);
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsEnemy);
+
+        foreach (Collider2D enemy in enemyColliders)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage();
+        }
     }
 
     private void OnDrawGizmos()

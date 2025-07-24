@@ -551,7 +551,6 @@ MonoBehaviour:
     m_Bits: 8
   wallCheck: {fileID: 81269962}
   wallCheckDistance: 0
-  enemyColliders: []
   attackRadius: 0.8
   attackPoint: {fileID: 1092495274}
   whatIsEnemy:
@@ -734,6 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675a30b9e20820f4d835d42a1e6a3389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redColorDuration: 2
+  timer: 0
 --- !u!1 &1566175361
 GameObject:
   m_ObjectHideFlags: 0
